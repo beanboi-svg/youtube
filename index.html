@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charlie Puth Sings the National Anthem at Super Bowl LX</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="video-container">
+        <div class="player" id="player">
+            <video id="video" src="video.mp4" playsinline preload="metadata"></video>
+
+            <div class="media-controls-container">
+                <div class="progress-container" id="progressContainer" role="slider" aria-label="Seek" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
+                    <div class="progress-preview" id="progressPreview" aria-hidden="true">
+                        <canvas class="progress-preview-frame" id="progressPreviewFrame" width="160" height="90"></canvas>
+                        <div class="progress-preview-time" id="progressPreviewTime">0:00</div>
+                    </div>
+                    <div class="progress-bar" id="progressBar"></div>
+                    <div class="scrubber" id="scrubber"></div>
+                </div>
+
+                <div class="media-controls">
+                    <button class="media-controller" id="playPauseBtn" aria-label="Play/Pause" type="button">
+                        <svg id="playIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.333 5.733 7.26 3.327A1.5 1.5 0 0 0 5 4.62v14.753a1.5 1.5 0 0 0 2.26 1.294l4.073-2.4zm0 0v12.534L22 12z" fill="currentColor"/></svg>
+                        <svg id="pauseIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:none;"><path d="M8.5 3h-2c-.4 0-.78.153-1.067.433A1.52 1.52 0 0 0 5 4.5v15c0 .393.153.773.433 1.06.287.28.667.44 1.067.44h2c.393 0 .773-.16 1.06-.44.28-.287.44-.667.44-1.06v-15c0-.4-.16-.78-.44-1.067A1.52 1.52 0 0 0 8.5 3m9 0h-2c-.4 0-.78.153-1.067.433A1.52 1.52 0 0 0 14 4.5v15c0 .393.153.773.433 1.06.287.28.667.44 1.067.44h2c.393 0 .773-.16 1.06-.44.28-.287.44-1.06v-15c0-.4-.16-.78-.44-1.067A1.52 1.52 0 0 0 17.5 3" fill="#fff"/></svg>
+                    </button>
+
+                    <button class="media-controller" id="muteBtn" aria-label="Mute/Unmute" type="button">
+                        <svg id="volumeOnIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m11.6 2.08-.12.06-7.57 4.54c-.89.53-1.63 1.29-2.14 2.19S1 10.79 1 11.83v.33l.01.4c.06.96.36 1.9.86 2.73.51.83 1.21 1.52 2.04 2.02l7.57 4.54c.15.09.32.14.5.14.18.01.35-.04.51-.12.15-.09.28-.22.37-.37s.14-.33.14-.5V3c-.01-.17-.05-.33-.13-.48a.9.9 0 0 0-.33-.36.9.9 0 0 0-.46-.16.9.9 0 0 0-.48.08m3.93 4.97c-.18.17-.28.4-.29.65s.07.49.22.68l.07.08.17.18c.39.42.69.91.91 1.44l.09.23c.2.54.3 1.11.3 1.69l-.01.24c-.03.49-.12.98-.29 1.44l-.09.23c-.25.6-.62 1.16-1.08 1.62-.18.19-.28.44-.27.7 0 .26.11.51.29.69.18.19.43.29.69.3.26 0 .52-.1.71-.27.65-.66 1.16-1.43 1.51-2.28l.13-.32c.23-.64.36-1.32.4-2.01L19 12c-.01-.81-.14-1.61-.41-2.36l-.13-.32c-.31-.75-.74-1.43-1.28-2.02l-.23-.25-.08-.07c-.19-.16-.44-.24-.68-.23-.25.02-.48.12-.66.3" fill="currentColor"/><path d="M18.36 4.22c-.18.17-.28.4-.29.65-.02.25.06.49.22.69l.07.07.3.32c.7.77 1.25 1.65 1.65 2.6l.16.41c.35.98.53 2 .53 3.03l-.02.45c-.04.88-.21 1.75-.51 2.59l-.16.41a9.1 9.1 0 0 1-1.95 2.92 1 1 0 0 0-.29.71c0 .26.1.52.29.7a.976.976 0 0 0 1.41 0c1.02-1.02 1.84-2.23 2.39-3.57l.19-.5c.37-1.02.58-2.08.63-3.16L23 12c-.01-1.27-.22-2.52-.65-3.71l-.19-.5c-.49-1.17-1.17-2.25-2.01-3.18l-.38-.39-.07-.07a.95.95 0 0 0-.68-.22c-.25.01-.49.11-.66.29" fill="currentColor"/></svg>
+                        <svg id="volumeOffIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:none;"><path d="m11.6 2.08-.12.06-7.57 4.54c-.89.53-1.63 1.29-2.14 2.19S1 10.79 1 11.83v.33l.01.4c.06.96.36 1.9.86 2.73.51.83 1.21 1.52 2.04 2.02l7.57 4.54c.15.09.32.14.5.14.18.01.35-.04.51-.12.15-.09.28-.22.37-.37s.14-.33.14-.5V3c-.01-.17-.05-.33-.13-.48a.9.9 0 0 0-.33-.36.9.9 0 0 0-.46-.16.9.9 0 0 0-.48.08M4.94 8.4 11 4.76v14.47L4.94 15.6c-.56-.34-1.02-.8-1.36-1.35s-.53-1.18-.58-1.82v-.6c-.01-.69.17-1.37.51-1.97.34-.61.83-1.11 1.43-1.46m16.35-.11L19 10.58l-2.3-2.29-.07-.07c-.2-.15-.44-.23-.68-.22-.25.01-.48.12-.66.29-.17.18-.28.41-.29.66-.01.24.07.48.22.68l.07.07 2.29 2.3-2.29 2.29c-.1.09-.17.2-.23.32-.05.12-.08.26-.08.39s.03.26.08.39c.05.12.12.23.22.32.09.1.2.17.32.22.13.05.26.08.39.08s.27-.03.39-.08c.12-.06.23-.13.32-.23l2.3-2.29 2.29 2.29.07.07c.2.16.44.24.69.22.24-.01.48-.11.65-.29.18-.17.28-.41.29-.65.01-.25-.06-.49-.22-.69l-.07-.07L20.41 12l2.29-2.3c.1-.09.17-.2.23-.32.05-.12.08-.26.08-.39s-.03-.26-.08-.39a.9.9 0 0 0-.22-.32c-.09-.1-.2-.17-.32-.22-.13-.05-.26-.08-.39-.08s-.27.03-.39.08c-.12.06-.23.13-.32.23" fill="#fff"/></svg>
+                    </button>
+
+                    <div class="timecode">
+                        <span class="current-time" id="currentTime">0:00</span> <span class="divider">/</span> <span class="duration" id="duration">0:00</span>
+                    </div>
+
+                    <button class="media-controller" id="captionsBtn" aria-label="Toggle captions" aria-pressed="false" type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M21.2 3.01 21 3H3l-.21.01c-.49.05-.95.28-1.28.64C1.18 4.02.99 4.5 1 5v14l.01.2c.04.46.25.88.57 1.21.33.32.75.53 1.21.58L3 21h18l.2-.02c.46-.04.88-.25 1.21-.57.32-.33.53-.75.58-1.21L23 19V5c0-.5-.19-.98-.52-1.35-.33-.36-.79-.59-1.28-.64M3 19V5h18v14zM6.97 8.34c-.55.3-1.01.75-1.33 1.29l-.14.24c-.34.66-.51 1.39-.5 2.13v.27c.04.65.21 1.28.5 1.85l.14.24c.32.54.78.99 1.33 1.29l.24.12c.58.24 1.22.29 1.82.14l.26-.08c.59-.22 1.1-.6 1.48-1.1.16-.2.23-.46.2-.71a1.01 1.01 0 0 0-1.04-.9c-.25.01-.49.12-.67.31l-.07.07c-.14.2-.34.35-.57.44l-.08.03c-.19.05-.38.03-.55-.05l-.08-.04c-.24-.13-.43-.32-.56-.56l-.07-.12A2.5 2.5 0 0 1 7 12.16V12c-.01-.42.09-.84.28-1.21l.07-.12c.13-.24.32-.43.56-.56a.86.86 0 0 1 .63-.09l.08.03c.19.07.36.19.49.34l.08.1.07.08c.17.17.4.28.65.3.24.02.49-.06.68-.21.2-.15.33-.37.37-.61.05-.25 0-.5-.13-.71l-.06-.08-.17-.21c-.36-.4-.81-.7-1.31-.89l-.26-.08c-.69-.17-1.43-.08-2.06.26m8 0c-.55.3-1.01.75-1.33 1.29l-.14.24c-.34.66-.51 1.39-.5 2.13v.27c.04.65.21 1.28.5 1.85l.14.24c.32.54.78.99 1.33 1.29l.24.12c.58.24 1.22.29 1.82.14l.26-.08c.59-.22 1.1-.6 1.48-1.1.16-.2.23-.46.2-.71a1.01 1.01 0 0 0-1.04-.9c-.25.01-.49.12-.67.31l-.07.07c-.14.2-.34.35-.57.44l-.08.03c-.19.05-.38.03-.55-.05l-.08-.04c-.24-.13-.43-.32-.56-.56l-.07-.12a2.5 2.5 0 0 1-.28-1.04V12c-.01-.42.09-.84.28-1.21l.07-.12c.13-.24.32-.43.56-.56a.86.86 0 0 1 .63-.09l.08.03c.19.07.36.19.49.34l.08.1.07.08c.17.17.4.28.65.3.24.02.49-.06.68-.21.2-.15.33-.37.37-.61.05-.25 0-.5-.13-.71l-.06-.08-.17-.21c-.36-.4-.81-.7-1.31-.89l-.26-.08c-.69-.17-1.43-.08-2.06.26" fill="#fff"/></svg>
+                    </button>
+
+                    <button class="media-controller" id="fullscreenBtn" aria-label="Fullscreen" type="button">
+                        <svg id="fullscreenIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3H3v7c0 .26.1.51.29.7A1 1 0 0 0 4 11c.26 0 .51-.11.7-.3s.3-.44.3-.7V6.41l4.29 4.29.07.07c.2.15.44.23.68.22.25-.01.48-.12.66-.29.17-.18.28-.41.29-.66.01-.24-.07-.48-.22-.68l-.07-.07L6.41 5H10c.26 0 .51-.11.7-.3s.3-.44.3-.7a1 1 0 0 0-.3-.71A.98.98 0 0 0 10 3m10 10a.99.99 0 0 0-1 1v3.58l-4.3-4.29-.07-.07c-.2-.15-.44-.23-.68-.22-.25.01-.48.12-.66.29-.17.18-.28.41-.29.66-.01.24.07.48.22.68l.07.07 4.29 4.3H14a.99.99 0 0 0-1 1c0 .26.1.51.29.7a1 1 0 0 0 .71.3h7v-7a1 1 0 0 0-.3-.71.98.98 0 0 0-.7-.29" fill="currentColor"/></svg>
+                        <svg id="minimizeIcon" height="24" viewBox="0 0 24 24" width="24" style="display:none;"><path d="M3.29 3.29c-.18.17-.28.41-.29.65-.02.25.06.49.22.69l.07.07 4.29 4.29H5a1 1 0 0 0-.71.3c-.19.18-.29.44-.29.7a.99.99 0 0 0 1 1h6v-6c0-.26-.11-.52-.3-.7a1 1 0 0 0-.7-.3 1 1 0 0 0-.71.3c-.19.18-.29.44-.29.7v2.59L4.7 3.29l-.07-.07A.97.97 0 0 0 3.94 3c-.24.01-.48.11-.65.29M19 13h-6v6c0 .26.1.51.29.7a1 1 0 0 0 .71.3c.26 0 .51-.11.7-.3s.3-.44.3-.7v-2.59l4.29 4.29.07.07c.2.15.44.23.68.22.25-.01.48-.12.66-.29.17-.18.28-.41.29-.66.01-.24-.07-.48-.22-.68l-.07-.07L16.41 15H19c.26 0 .51-.11.7-.3s.3-.44.3-.7a1 1 0 0 0-.3-.71.98.98 0 0 0-.7-.29" fill="#fff"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="video-context-menu" id="videoContextMenu" role="menu" aria-hidden="true">
+                <button class="video-context-menu-item" id="loopMenuItem" type="button" role="menuitem">
+                    <span>Loop</span>
+                    <span class="video-context-menu-state" id="loopMenuState">Off</span>
+                </button>
+                <button class="video-context-menu-item" id="copyUrlMenuItem" type="button" role="menuitem">
+                    Copy URL
+                </button>
+            </div>
+        </div>
+
+        <div class="upload-controls">
+            <input id="videoUploadInput" class="video-upload-input" type="file" accept="video/*">
+            <button id="uploadVideoBtn" class="upload-video-btn" type="button">Upload from Device</button>
+            <input id="captionsUploadInput" class="video-upload-input" type="file" accept=".vtt,text/vtt">
+            <button id="uploadCaptionsBtn" class="upload-video-btn" type="button">Upload Captions (.vtt)</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
